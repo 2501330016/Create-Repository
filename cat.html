@@ -1,26 +1,21 @@
-const { MongoClient } = require("mongodb");
-// 下のURIをご自分の値に変更してください
-const uri = "mongodb://test:test@ac-gvkusqx-shard-00-00.kto6uzt.mongodb.net:27017,ac-gvkusqx-shard-00-01.kto6uzt.mongodb.net:27017,ac-gvkusqx-shard-00-02.kto6uzt.mongodb.net:27017/?ssl=true&replicaSet=atlas-12tq7c-shard-0&authSource=admin&appName=Cluster0";
-const client = new MongoClient(uri);
-async function run() {
-const database = client.db('notes');
-const notes = database.collection('notes');
-// データを登録
-const query = [{
-id: 1,
-title: 'ノート１のタイトルです',
-subTitle: 'ノート１のサブタイトルです',
-bodyText: 'ノート１の本文です'
-},
-{
-id: 2,
-title: 'ノート２のタイトルです',
-subTitle: 'ノート２のサブタイトルです',
-bodyText: 'ノート２の本文です'
-}];
-const note = await notes.insertMany(query);
-console.log(note);
-// 最後にクロースする
-await client.close();
-}
-run()
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cat API Example</title>
+</head>
+<body>
+<img id="cat-image" src="" alt="Random cat image">
+<script>
+const request = new XMLHttpRequest();
+request.open('GET', 'https://api.thecatapi.com/v1/images/search');
+request.onload = function () {
+const data = JSON.parse(request.responseText);
+const catImage = document.getElementById('cat-image');
+catImage.src = data[0].url;
+};
+request.send();
+</script>
+</body>
+</html>
+cat.htmlをWebブラウザで開くと
+猫の画像が表示される
