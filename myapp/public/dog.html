@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cat API Example</title>
+</head>
+<body>
+<img id="cat-image" src="" alt="Random cat image">
+<script>
+const request = new XMLHttpRequest();
+request.open('GET', 'https://dog.ceo/api/breeds/image/random');
+request.onload = function () {
+const data = JSON.parse(request.responseText);
+const dogImage = document.getElementById('dog-image');
+dogImage.src = data.message;
+};
+request.send();
+</script>
+</body>
+</html>
