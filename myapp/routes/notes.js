@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const cors = require('cors'); // corsミドルウェアを追加
+require('dotenv').config(); // .envファイルを読み込む
 
 const { MongoClient } = require("mongodb");
 
 // ★ちゃんとしたURIにする（自分のやつに置き換え）
-const uri = "mongodb+srv://2501330016zc_db_user:bSlHvonj95UB096o@cluster0.pb3gmk8.mongodb.net/?appName=Cluster0";
-
+const uri = process.env.MONGODB_URI;
+console.log(uri);
 const client = new MongoClient(uri);
 
 async function connectDB() {
