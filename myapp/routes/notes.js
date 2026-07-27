@@ -7,7 +7,6 @@ const { MongoClient } = require("mongodb");
 
 // ★ちゃんとしたURIにする（自分のやつに置き換え）
 const uri = process.env.MONGODB_URI;
-console.log(uri);
 const client = new MongoClient(uri);
 
 async function connectDB() {
